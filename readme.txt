@@ -30,7 +30,6 @@ Pinterest pin it button on image hover plugin provides facility to pins your blo
 
 1. Upload the entire **pinterest-pin-it-button-on-image-hover-and-post** folder to the **/wp-content/plugins/** directory.
 2. Activate the plugin through the **Plugins** menu in WordPress admin.
-3. Go to .
 
 == Screenshots ==
 
