@@ -215,12 +215,12 @@ function SaveSettings(){
 		type: "POST",
 		url: ajaxurl,
 		data: { action: "save_pinit", 
-				PinItPost: jQuery("input[name=pinitpost]:radio:checked").val(),
-				PinItPage: jQuery("input[name=pinitpage]:radio:checked").val(),
-				PinItOnHover: jQuery("input[name=pinitonhover]:radio:checked").val(),
-				PinItColor: jQuery("select#pinitcolor").val(),
-				PinItDesign: jQuery("select#pinitdesign").val(),
-				PinItSize: jQuery("select#pinitsize").val()
+			PinItPost: jQuery("input[name=pinitpost]:radio:checked").val(),
+			PinItPage: jQuery("input[name=pinitpage]:radio:checked").val(),
+			PinItOnHover: jQuery("input[name=pinitonhover]:radio:checked").val(),
+			PinItColor: jQuery("select#pinitcolor").val(),
+			PinItDesign: jQuery("select#pinitdesign").val(),
+			PinItSize: jQuery("select#pinitsize").val()
 		},
 		dataType: 'html',
 		complete : function() {  },
