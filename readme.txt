@@ -4,9 +4,9 @@ Donate link: http://www.weblizar.com/
 Contributors: weblizar
 Donate link: http://www.weblizar.com/
 Tags: advanced pinterest, board, feed, free, free pinterest widget, image, images, media, photo, photo share plugin, photos, pin it, pin it button, pinter pin display, pinterest, pinterest board, pinterest button, pinterest display, Pinterest Feed, pinterest follow, pinterest follow badge, pinterest follow button, pinterest pin, pinterest pin button, pinterest pin it button, pinterest share, pinterest widget, rss, sidebar, social, social button, social media, social share, social share plugin, widget, wordpress, wordpress widget, pinterest pin it button on hover, pin it on hover, pin it image, pin image, pin it button ob post, 
-Requires at least: 3.3
-Tested up to: 4.1.1
-Stable tag: 1.1
+Requires at least: 3.5
+Tested up to: 4.2
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,9 @@ Pinterest pin it button on image hover plugin provides facility to pins your blo
 == Changelog ==
 
 For more information, see [Weblizar](http://wwww.weblizar.com/).
+
+= Version 1.2 22-Apr-2015 =
+* New: WordPress 4.2 Compatible
 
 = 1.1 =
 * Bug Fix: RSS Killing Script Moved To Head
