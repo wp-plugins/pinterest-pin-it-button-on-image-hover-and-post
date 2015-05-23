@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Pinterest Pin It Button On Image Hover And Post
- * Version: 1.2
+ * Plugin Name: Pinterest Pin It Button On Image Hover And After Post & Page Content
+ * Version: 1.3
  * Description: Pin Your WordPress Blog Posts Pages Images With Pinterest
  * Author: Weblizar
  * Author URI: http://weblizar.com/plugins/
@@ -48,19 +48,19 @@ if($PinItOnHover == "true"){
 	add_action('wp_head', 'wl_pinit_js');
 }
 function wl_pinit_js() {
-	$PinItOnHover 		= get_option("WL_Pinit_Btn_On_Hover");
-	$PinItColor	= get_option("WL_Pinit_Btn_Color");
+	$PinItOnHover 	= get_option("WL_Pinit_Btn_On_Hover");
+	$PinItColor		= get_option("WL_Pinit_Btn_Color");
 	$PinItSize		= get_option("WL_Pinit_Btn_Size");
-    ?><script type="text/javascript" async defer  data-pin-color="<?php echo $PinItColor; ?>" <?php if($PinItSize == "large") { ?>data-pin-height="28"<?php }?> data-pin-hover="<?php echo $PinItOnHover; ?>" src="<?php echo WEBLIZAR_PINIT_PLUGIN_URL."js/pinit.js"; ?>"></script><?php
+    ?><script type="text/javascript" async defer data-pin-color="<?php echo $PinItColor; ?>" <?php if($PinItSize == "large") { ?>data-pin-height="28"<?php }?> data-pin-hover="<?php echo $PinItOnHover; ?>" src="<?php echo WEBLIZAR_PINIT_PLUGIN_URL."js/pinit.js"; ?>"></script><?php
 }
 
 //Add Pin It Button After Post Content
 function Load_pin_it_button_after_post_content($content){
-	if (is_single()) {
+	if (is_single() && get_post_type( $post ) == "post") {
 		//check for enable post pin it button
 		$PinItPost 		= get_option("WL_Enable_Pinit_Post");
 		if(get_option("WL_Enable_Pinit_Post")) {
-			$content .= '<p><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a></p>';
+			$content .= '<p><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="128"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a></p>';
 		}		
 	}
 	return $content;
@@ -70,11 +70,11 @@ add_filter( "the_content", "Load_pin_it_button_after_post_content" );
 
 //Add Pin It Button After Page Content
 function Load_pin_it_button_after_page_content($content){
-	if (!is_single()) {
+	if (!is_single()  && get_post_type( $post ) == "page") {
 		//check for enable page pin it button
 		$PinItPage 		= get_option("WL_Enable_Pinit_Page");
 		if(get_option("WL_Enable_Pinit_Page")) {
-			$content .= '<p><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a></p>';
+			$content .= '<p><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark" data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a></p>';
 		}
 	}
 	return $content;

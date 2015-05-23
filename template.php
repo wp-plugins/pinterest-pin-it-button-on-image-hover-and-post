@@ -172,8 +172,8 @@
 						</div>
 						<hr>
 						
-						<button id="pinitsave" name="pinitsave" class="btn btn-primary btn-lg" type="button" onclick="return SaveSettings();"><i class="fa fa-save"></i> Settings</button>
-						<p id="loading" name="loading" style="display: none;"><i class="fa fa-cog fa-spin fa-3x"></i></p>
+						<button id="pinitsave" name="pinitsave" class="btn btn-primary btn-lg" type="button" onclick="return SaveSettings();"><i class="fa fa-save fa-2x"></i> Settings</button>
+						<p id="loading" name="loading" style="display: none;"><i class="fa fa-cog fa-spin fa-5x"></i></p>
 					</div>
 					
 					<div id="need-help-tab" class="tab-pane fade">
