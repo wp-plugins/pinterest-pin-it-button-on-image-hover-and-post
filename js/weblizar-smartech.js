@@ -1,5 +1,4 @@
 jQuery(function() {
-
     jQuery('.sidebar-toggle').on('click', function() {
         jQuery('body').toggleClass('sidebar-collapse');
         setTimeout(function() {
@@ -12,7 +11,6 @@ jQuery(function() {
         jQuery('.panel-heading .panel-collapse i', jQuerypanel).toggleClass('fa-caret-down').toggleClass('fa-caret-up')
         jQuery('.panel-body', jQuerypanel).toggleClass('hidden')
     })
-
 
     if (jQuery().sparkline)
         jQuery("#page-title-statistics").sparkline([10, 3, 4, -3, -2, 5, 8, 11, 6, 7, -7, -5, 8, 9, 5, 6, 7, 2, 0, -4, -2, 4], {
@@ -50,7 +48,6 @@ jQuery(window).resize(function() {
         jQuery('.sidebar-right.open').height(jQuery('body').height() - 50)
     }
 })
-
 
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.

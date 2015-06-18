@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Pinterest Pin It Button On Image Hover And After Post & Page Content
- * Version: 1.3
+ * Version: 1.4
  * Description: Pin Your WordPress Blog Posts Pages Images With Pinterest
  * Author: Weblizar
  * Author URI: http://weblizar.com/plugins/
@@ -43,7 +43,9 @@ function PiniIt_DefaultSettings(){
 
 //Load saved pin it button settings
 $PinItOnHover 	= get_option("WL_Pinit_Btn_On_Hover");
-if($PinItOnHover == "true"){ 
+
+//Show Pin It Button On Image Hover
+if($PinItOnHover == "true"){
 	// Add hook for frontend <head></head>
 	add_action('wp_head', 'wl_pinit_js');
 }
@@ -56,7 +58,7 @@ function wl_pinit_js() {
 
 //Add Pin It Button After Post Content
 function Load_pin_it_button_after_post_content($content){
-	if (is_single() && get_post_type( $post ) == "post") {
+	if (is_single() && get_post_type( $post = get_post() ) == "post") {
 		//check for enable post pin it button
 		$PinItPost 		= get_option("WL_Enable_Pinit_Post");
 		if(get_option("WL_Enable_Pinit_Post")) {
@@ -70,7 +72,7 @@ add_filter( "the_content", "Load_pin_it_button_after_post_content" );
 
 //Add Pin It Button After Page Content
 function Load_pin_it_button_after_page_content($content){
-	if (!is_single()  && get_post_type( $post ) == "page") {
+	if (!is_single()  && get_post_type( $post = get_post() ) == "page") {
 		//check for enable page pin it button
 		$PinItPage 		= get_option("WL_Enable_Pinit_Page");
 		if(get_option("WL_Enable_Pinit_Page")) {
@@ -79,14 +81,9 @@ function Load_pin_it_button_after_page_content($content){
 	}
 	return $content;
 }
-
 add_filter( "the_content", "Load_pin_it_button_after_page_content" );
 
-
-
-/**
- * Plugin Settings Admin Menu
- */
+//Plugin Settings Admin Menu
 add_action('admin_menu','WL_PinItButtonPage');
 
 function WL_PinItButtonPage() {
@@ -94,27 +91,25 @@ function WL_PinItButtonPage() {
     add_action( 'admin_print_styles-' . $PinItAdminMenu, 'PiniIt_Menu_Assets' );
 }
 
-/**
- * Load PinItAdminMenu Pages Assets JS/CSS/Images
- */
+//Load PinItAdminMenu Pages Assets JS/CSS/Images
 function PiniIt_Menu_Assets() {
-    /**
-     * All Required CSS & JS  Files
-     */
-	wp_enqueue_style('bootstrap_css', WEBLIZAR_PINIT_PLUGIN_URL.'css/bootstrap.css');
-	wp_enqueue_style('weblizar-smartech-css', WEBLIZAR_PINIT_PLUGIN_URL.'css/weblizar-smartech.css');
-	wp_enqueue_style('font-awesome_min', WEBLIZAR_PINIT_PLUGIN_URL.'font-awesome/css/font-awesome.min.css');
-	wp_enqueue_style('font-animate', WEBLIZAR_PINIT_PLUGIN_URL.'css/animate.css');
-	
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('bootstrap-min-js',WEBLIZAR_PINIT_PLUGIN_URL.'js/bootstrap.min.js');
-	wp_enqueue_script('weblizar-smartech-js',WEBLIZAR_PINIT_PLUGIN_URL.'js/weblizar-smartech.js',array('jquery'));
+	if(is_admin()) {
+		wp_enqueue_style('bootstrap_css', WEBLIZAR_PINIT_PLUGIN_URL.'css/bootstrap.css');
+		wp_enqueue_style('weblizar-smartech-css', WEBLIZAR_PINIT_PLUGIN_URL.'css/weblizar-smartech.css');
+		wp_enqueue_style('font-awesome_min', WEBLIZAR_PINIT_PLUGIN_URL.'font-awesome/css/font-awesome.min.css');
+		wp_enqueue_style('font-animate', WEBLIZAR_PINIT_PLUGIN_URL.'css/animate.css');
+		
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('bootstrap-min-js',WEBLIZAR_PINIT_PLUGIN_URL.'js/bootstrap.min.js');
+		wp_enqueue_script('weblizar-smartech-js',WEBLIZAR_PINIT_PLUGIN_URL.'js/weblizar-smartech.js',array('jquery'));
+	}
 }
 
 function pinterest_pinit_button_settings_page() {
 	require_once("template.php");
 }
 
+//Save Plugin Settings
 add_action( 'wp_ajax_save_pinit', 'PinItSaveSettings' );
 function PinItSaveSettings() {
 	update_option("WL_Enable_Pinit_Post", $_POST['PinItPost']);
