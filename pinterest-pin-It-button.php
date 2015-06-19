@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Pinterest Pin It Button On Image Hover And After Post & Page Content
- * Version: 1.4
+ * Version: 1.4.1
  * Description: Pin Your WordPress Blog Posts Pages Images With Pinterest
  * Author: Weblizar
  * Author URI: http://weblizar.com/plugins/
@@ -47,7 +47,7 @@ $PinItOnHover 	= get_option("WL_Pinit_Btn_On_Hover");
 //Show Pin It Button On Image Hover
 if($PinItOnHover == "true"){
 	// Add hook for frontend <head></head>
-	add_action('wp_head', 'wl_pinit_js');
+	add_action('wp', 'wl_pinit_js');
 }
 function wl_pinit_js() {
 	$PinItOnHover 	= get_option("WL_Pinit_Btn_On_Hover");
