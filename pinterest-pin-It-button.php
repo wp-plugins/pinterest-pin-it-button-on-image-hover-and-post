@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Pinterest Pin It Button On Image Hover And After Post & Page Content
- * Version: 1.5
+ * Version: 1.6
  * Description: Pin Your WordPress Blog Posts Pages Images With Pinterest
  * Author: Weblizar
  * Author URI: http://weblizar.com/plugins/
